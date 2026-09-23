@@ -1,0 +1,4 @@
+artifacts/
+build_dir/
+*.tmp
+.DS_Store

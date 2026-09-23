@@ -1,0 +1,18 @@
+MIT License
+
+Copyright (c) 2026
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of the scripts in this repository (install.sh, uninstall.sh, build/build.sh)
+and associated documentation files (the "Software"), to deal in the Software
+without restriction, including without limitation the rights to use, copy,
+modify, merge, publish, distribute, sublicense, and/or sell copies of the
+Software, and to permit persons to whom the Software is furnished to do so.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
+NOTE: This MIT license covers ONLY the helper scripts in this repository.
+The prebuilt kernel modules under modules/ and the .apk packages under
+packages/ are built from ImmortalWrt/OpenWrt sources and are licensed under
+their respective licenses (mostly GPL-2.0). The rt2870.bin firmware blob is
+proprietary Ralink/MediaTek firmware under its own redistribution license.

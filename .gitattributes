@@ -1,0 +1,9 @@
+# Shell-скрипты и конфиги должны оставаться с LF, иначе сломаются в busybox ash.
+* text=auto eol=lf
+*.sh text eol=lf
+50-rt2800usb-wifi text eol=lf
+*.example text eol=lf
+
+# Бинарники — не трогать.
+*.ko binary
+*.apk binary
