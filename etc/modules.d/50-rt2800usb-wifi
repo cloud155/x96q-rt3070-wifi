@@ -1,0 +1,8 @@
+compat
+cfg80211
+mac80211
+eeprom_93cx6
+rt2x00lib
+rt2x00usb
+rt2800lib
+rt2800usb

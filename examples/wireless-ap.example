@@ -1,0 +1,35 @@
+# Пример: приставка как ТОЧКА ДОСТУПА (AP) — раздаёт Wi-Fi, клиенты попадают в сеть lan.
+#
+# Применение (на приставке):
+#   cp examples/wireless-ap.example /etc/config/wireless
+#   # отредактируйте ssid/key, проверьте option path (см. ниже)
+#   wifi up
+#   wifi status
+#
+# ВАЖНО про option path:
+#   Значение ниже соответствует USB-порту, в котором адаптер был при настройке
+#   (порт 3-1 на этой приставке). Если переткнёте адаптер в другой физический
+#   порт — path изменится и радио не поднимется. Актуальный path всегда можно
+#   получить командой:  wifi config      (печатает готовый блок)
+#   либо:  echo $(readlink -f /sys/class/ieee80211/phy0/device) | sed 's#/sys/devices/##'
+#
+#   Альтернатива, не зависящая от порта: вместо option path указать
+#     option macaddr '<MAC адаптера>'      # MAC виден в: iw phy0 info | grep -i addr
+#                                          # или: cat /sys/class/ieee80211/phy0/macaddress
+
+config wifi-device 'radio0'
+	option type 'mac80211'
+	option path 'platform/soc/5311000.usb/usb3/3-1/3-1:1.0'
+	option band '2g'
+	option channel '6'
+	option htmode 'HT20'
+	option country 'CN'
+	option disabled '0'
+
+config wifi-iface 'default_radio0'
+	option device 'radio0'
+	option network 'lan'
+	option mode 'ap'
+	option ssid 'MyTVBox'
+	option encryption 'psk2'
+	option key 'smените-этот-пароль'

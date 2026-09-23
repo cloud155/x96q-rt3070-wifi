@@ -1,0 +1,33 @@
+# Пример: приставка как КЛИЕНТ (STA) — сама подключается к существующей Wi-Fi сети.
+#
+# Применение (на приставке):
+#   cp examples/wireless-sta.example /etc/config/wireless
+#   # впишите ssid/key вашей домашней сети, проверьте option path
+#   wifi up
+#   iwinfo wlan0 info        # проверить ассоциацию
+#   ip a show wlan0          # получил ли IP (если сеть с DHCP и настроен wwan)
+#
+# Здесь радио подключается к сети и кладётся в интерфейс 'wwan'. Чтобы получить
+# интернет от этой сети, заведите interface 'wwan' в /etc/config/network:
+#   config interface 'wwan'
+#       option proto 'dhcp'
+#   и добавьте wwan в firewall-зону wan (uci add_list firewall.@zone[1].network='wwan').
+#
+# Про option path — см. комментарий в wireless-ap.example (зависит от USB-порта).
+
+config wifi-device 'radio0'
+	option type 'mac80211'
+	option path 'platform/soc/5311000.usb/usb3/3-1/3-1:1.0'
+	option band '2g'
+	option channel 'auto'
+	option htmode 'HT20'
+	option country 'CN'
+	option disabled '0'
+
+config wifi-iface 'default_radio0'
+	option device 'radio0'
+	option network 'wwan'
+	option mode 'sta'
+	option ssid 'ИМЯ_ДОМАШНЕЙ_СЕТИ'
+	option encryption 'psk2'
+	option key 'пароль_домашней_сети'
